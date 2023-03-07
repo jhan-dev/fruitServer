@@ -1,0 +1,22 @@
+{
+  "name": "fruitserver",
+  "version": "1.0.0",
+  "description": "mongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhan-dev/fruitServer.git"
+  },
+  "author": "jhan-dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhan-dev/fruitServer/issues"
+  },
+  "homepage": "https://github.com/jhan-dev/fruitServer#readme",
+  "dependencies": {
+    "mongodb": "^5.1.0"
+  }
+}
