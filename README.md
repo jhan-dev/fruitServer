@@ -5,5 +5,5 @@ A mongoDB server managing fruits!
 
 npm init
 
-npm i mongodb --save
+npm i mongodb
 
