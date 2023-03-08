@@ -75,3 +75,6 @@ Fruit.find()
 .catch(function  (err) {
   console.log(err);
 });
+
+// Mongoose CRUD Operations (Query functions)
+// https://mongoosejs.com/docs/queries.html
