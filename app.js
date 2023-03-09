@@ -9,20 +9,20 @@ const fruitSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please input a valid name."]
   },
-  rating: {
+  review: String,
+  score: {
     type: Number,
     min: 1,
     max: 10
   },
-  review: String,
 });
 
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
 const fruit = new Fruit({
   name: "Apple",
-  score: 8,
-  review: "Refreshing and crisp!",
+  score: 7,
+  review: "Fresh and crisp!",
 });
 
 // fruit.save();
@@ -30,19 +30,38 @@ const fruit = new Fruit({
 const personSchema = new mongoose.Schema({
   name: String,
   age: Number,
+  favoriteFruit: fruitSchema
 });
 
 const Person = mongoose.model("Person", personSchema);
-const person = new Person({
-  name: "John",
-  age: 37,
+
+const pineapple = new Fruit({
+  name: "Pineapple",
+  score: 9,
+  review: "Juicy and refreshing!"
 });
 
-person.save();
+// pineapple.save();
+
+Person.updateOne({name: "John"}, {favoriteFruit: pineapple})
+  .then(function(){
+    console.log("Successfully updated the document.")
+  })
+  .catch(function(err){
+    console.log(err)
+  })
+
+// const person = new Person({
+//   name: "Amy",
+//   age: 12,
+//   favoriteFruit: pineapple
+// });
+
+// person.save();
 
 const kiwi = new Fruit({
   name: "Kiwi",
-  score: 9,
+  score: 8,
   review: "Sour goodness!",
 });
 
@@ -58,23 +77,23 @@ const banana = new Fruit({
   review: "Potassium!",
 });
 
-Fruit.insertMany([kiwi, orange, banana])
-  .then(function(){
-    console.log("Successfully saved all the fruits to fruitsDB.");
-  })
-  .catch(function(err){
-    console.log(err);
-  })
+// Fruit.insertMany([kiwi, orange, banana])
+//   .then(function(){
+//     console.log("Successfully saved all the fruits to fruitsDB.");
+//   })
+//   .catch(function(err){
+//     console.log(err);
+//   })
 
-Fruit.find()
-.then(function(fruits){
-  fruits.forEach((fruits) => {
-    console.log(fruits.id, ":", fruits.name);
-  })
-})
-.catch(function  (err) {
-  console.log(err);
-});
+// Fruit.find()
+// .then(function(fruits){
+//   fruits.forEach((fruits) => {
+//     console.log(fruits.id, ":", fruits.name);
+//   })
+// })
+// .catch(function  (err) {
+//   console.log(err);
+// });
 
 // Mongoose CRUD Operations (Query functions)
 // https://mongoosejs.com/docs/queries.html
